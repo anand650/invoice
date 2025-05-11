@@ -47,10 +47,10 @@ const response = await axios.post(
   DESTINATION_URL,
   req.body,
   {
-  auth: {
-             username: AUTH_USERNAME,
-             password: AUTH_PASSWORD
-           },
+//  auth: {
+//             username: AUTH_USERNAME,
+//             password: AUTH_PASSWORD
+//           },
     headers: {
       'Authorization': `Basic ${basicAuth}`,
       'Content-Type': 'application/json',
