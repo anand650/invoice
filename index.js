@@ -8,7 +8,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-const SECRET_KEY = 'e2b74c5d-9140-4a4c-90f0-f64da4b3fd42';
+//const SECRET_KEY = 'e2b74c5d-9140-4a4c-90f0-f64da4b3fd42';
 
 // Actual destination API info
 const DESTINATION_URL = 'https://cargomation.com:5200/redis/apinvoice/compare';
@@ -18,10 +18,10 @@ const AUTH_PASSWORD = 'u}M[6zzAU@w8YLx';
 
 app.post('/compare', async (req, res) => {
   const authHeader = req.headers['authorization'];
-
-  if (!authHeader || authHeader !== `Bearer ${SECRET_KEY}`) {
-    return res.status(403).json({ message: 'Unauthorized' });
-  }
+//
+//  if (!authHeader || authHeader !== `Bearer ${SECRET_KEY}`) {
+//    return res.status(403).json({ message: 'Unauthorized' });
+//  }
 
   try {
 const basicAuth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
@@ -36,7 +36,7 @@ const response = await axios.post(
     },
     headers: {
       'Content-Type': 'application/json',
-      'User-Agent': 'Axios/1.0',
+//      'User-Agent': 'Axios/1.0',
       'Accept': 'application/json'
     }
     }
