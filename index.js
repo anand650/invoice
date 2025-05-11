@@ -24,23 +24,43 @@ app.post('/compare', async (req, res) => {
   }
 
   try {
-    const response = await axios.post(
-      DESTINATION_URL,
-      req.body,
-      {
-        auth: {
-          username: AUTH_USERNAME,
-          password: AUTH_PASSWORD
-        },
-        headers: {
-//          'User-Agent': 'axios/0.27.2',
-          'Content-Type': 'application/json',
-//          'Accept': 'application/json',
-//          'Connection': 'keep-alive'
-        }
-      }
-    );
-console.log('POST /compare hit');
+//    const response = await axios.post(
+//      DESTINATION_URL,
+//      req.body,
+//      {
+//        auth: {
+//          username: AUTH_USERNAME,
+//          password: AUTH_PASSWORD
+//        },
+//        headers: {
+////          'User-Agent': 'axios/0.27.2',
+//          'Content-Type': 'application/json',
+////          'Accept': 'application/json',
+////          'Connection': 'keep-alive'
+//        }
+//      }
+//    );
+
+const basicAuth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
+
+const response = await axios.post(
+  DESTINATION_URL,
+  req.body,
+  {
+  auth: {
+             username: AUTH_USERNAME,
+             password: AUTH_PASSWORD
+           },
+    headers: {
+      'Authorization': `Basic ${basicAuth}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'Axios/1.0',
+      'Accept': 'application/json'
+    }
+  }
+);
+
+//console.log('POST /compare hit');
     return res.status(response.status).json(response.data);
   } catch (err) {
     console.error('Error forwarding request:', err.response?.data || err.message);
