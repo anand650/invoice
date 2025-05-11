@@ -24,17 +24,19 @@ app.post('/compare', async (req, res) => {
 //  }
 
   try {
-const basicAuth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
+//const basicAuth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
+const auth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
 
 const response = await axios.post(
   DESTINATION_URL,
   req.body,
   {
- auth: {
-      username: AUTH_USERNAME,
-      password: AUTH_PASSWORD
-    },
+// auth: {
+//      username: AUTH_USERNAME,
+//      password: AUTH_PASSWORD
+//    },
     headers: {
+     'Authorization': `Basic ${auth}`,
       'Content-Type': 'application/json',
 //      'User-Agent': 'Axios/1.0',
       'Accept': 'application/json'
