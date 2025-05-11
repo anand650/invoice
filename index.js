@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 // Actual destination API info
 const DESTINATION_URL = "https://cargomation.com:5200/redis/apinvoice/compare";
 const AUTH_USERNAME = 'admin';
-const AUTH_PASSWORD = `u\}M[6zzAU@w8YLx`;
+const AUTH_PASSWORD = 'u\\}M[6zzAU@w8YLx';
 
 
 app.post('/compare', async (req, res) => {
