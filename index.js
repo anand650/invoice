@@ -18,13 +18,8 @@ const AUTH_PASSWORD = 'u\\}M[6zzAU@w8YLx';
 
 app.post('/compare', async (req, res) => {
   const authHeader = req.headers['authorization'];
-//
-//  if (!authHeader || authHeader !== `Bearer ${SECRET_KEY}`) {
-//    return res.status(403).json({ message: 'Unauthorized' });
-//  }
 
   try {
-//const basicAuth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
 const auth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
 
 const response = await axios.post(DESTINATION_URL,
@@ -35,15 +30,12 @@ const response = await axios.post(DESTINATION_URL,
       password: AUTH_PASSWORD
     },
     headers: {
-//     'Authorization': `Basic ${auth}`,
       'Content-Type': 'application/json',
-//      'User-Agent': 'Axios/1.0',
+      'User-Agent': 'Axios/1.0',
       'Accept': 'application/json'
     }
     }
 );
-
-//console.log('POST /compare hit');
     return res.status(response.status).json(response.data);
   } catch (err) {
     console.error('Error forwarding request:', err.response?.data || err.message);
