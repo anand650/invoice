@@ -11,9 +11,9 @@ const PORT = process.env.PORT || 3000;
 //const SECRET_KEY = 'e2b74c5d-9140-4a4c-90f0-f64da4b3fd42';
 
 // Actual destination API info
-const DESTINATION_URL = 'https://cargomation.com:5200/redis/apinvoice/compare';
+const DESTINATION_URL = "https://cargomation.com:5200/redis/apinvoice/compare";
 const AUTH_USERNAME = 'admin';
-const AUTH_PASSWORD = '__n8n_BLANK_VALUE_e5362baf-c777-4d57-a609-6eaf1f9e87f6';
+const AUTH_PASSWORD = `u\}M[6zzAU@w8YLx`;
 
 
 app.post('/compare', async (req, res) => {
@@ -27,8 +27,7 @@ app.post('/compare', async (req, res) => {
 //const basicAuth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
 const auth = Buffer.from(`${AUTH_USERNAME}:${AUTH_PASSWORD}`).toString('base64');
 
-const response = await axios.post(
-  DESTINATION_URL,
+const response = await axios.post(DESTINATION_URL,
   req.body,
   {
  auth: {
