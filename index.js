@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 // Actual destination API info
 const DESTINATION_URL = 'https://cargomation.com:5200/redis/apinvoice/compare';
 const AUTH_USERNAME = 'admin';
-const AUTH_PASSWORD = 'u}M[6zzAU@w8YLx';
+const AUTH_PASSWORD = '__n8n_BLANK_VALUE_e5362baf-c777-4d57-a609-6eaf1f9e87f6';
 
 
 app.post('/compare', async (req, res) => {
@@ -31,12 +31,12 @@ const response = await axios.post(
   DESTINATION_URL,
   req.body,
   {
-// auth: {
-//      username: AUTH_USERNAME,
-//      password: AUTH_PASSWORD
-//    },
+ auth: {
+      username: AUTH_USERNAME,
+      password: AUTH_PASSWORD
+    },
     headers: {
-     'Authorization': `Basic ${auth}`,
+//     'Authorization': `Basic ${auth}`,
       'Content-Type': 'application/json',
 //      'User-Agent': 'Axios/1.0',
       'Accept': 'application/json'
